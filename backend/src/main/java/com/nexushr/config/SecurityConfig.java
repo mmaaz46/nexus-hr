@@ -36,7 +36,7 @@ public SecurityFilterChain securityFilterChain(
     .httpBasic(httpBasic -> httpBasic.disable())
     .formLogin(form -> form.disable())
     .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/api/auth/**").permitAll()
+        .requestMatchers("/api/auth/**", "/api/hello", "/error").permitAll()
         .anyRequest().authenticated()
     )
     .addFilterBefore(jwtAuthFilter,
